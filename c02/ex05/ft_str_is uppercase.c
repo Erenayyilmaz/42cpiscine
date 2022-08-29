@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_str_is uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayyilma <42istanbul.com.tr>               +#+  +:+       +#+        */
+/*   By: kayyilma <kayyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 13:21:10 by kayyilma          #+#    #+#             */
-/*   Updated: 2022/08/29 13:21:37 by kayyilma         ###   ########.tr       */
+/*   Created: 2022/08/29 13:33:40 by kayyilma          #+#    #+#             */
+/*   Updated: 2022/08/29 13:35:21 by kayyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_str_is_uppercase(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (i < n && src[i] != '\0')
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (str[i] <= 'Z' && str[i] >= 'A')
+		{
+			continue ;
+		}
+		else
+		{
+			return (0);
+		}
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (1);
 }

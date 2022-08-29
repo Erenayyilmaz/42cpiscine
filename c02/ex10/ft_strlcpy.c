@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kayyilma <kayyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 13:38:24 by kayyilma          #+#    #+#             */
-/*   Updated: 2022/08/29 14:52:26 by kayyilma         ###   ########.fr       */
+/*   Created: 2022/08/29 15:00:03 by kayyilma          #+#    #+#             */
+/*   Updated: 2022/08/29 15:21:22 by kayyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ctrl_fnc(char *str, int i)
+int	my_str_len(char *str)
 {
-	if ((str[i] >= 'a' && str[i] <= 'z'))
+	int	counter;
+
+	counter = 0;
+	while (str[counter] != '\0')
 	{
-		if (str[i - 1] < 'a' || str[i - 1] > 'z')
-		{
-			if ((str[i - 1] < 'A' && str[i - 1] > 'Z'))
-			{
-				if (str[i - 1] <= '9' && str[i - 1] >= '0')
-					str[i] = str[i] - ('a' - 'A');
-			}				
-		}
+		counter++;
 	}
+	return (counter);
 }
 
-char	*ft_strcapitalize(char *str)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	if (str[0] >= 'a' && str[0] <= 'z')
-		str[0] = str[0] - ('a' - 'A');
-	while (str[i] != '\0')
+	if (size == 0)
 	{
-		ctrl_fnc (str, i);
+		return (my_str_len(src));
+	}
+	while (src[i] != '\0' && i < size - 1)
+	{
+		dest[i] = src[i];
 		i++;
 	}
-	return (1);
+	dest[i] = '\0';
+	return (my_str_len(src));
 }
